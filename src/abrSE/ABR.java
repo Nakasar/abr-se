@@ -55,6 +55,7 @@ public class ABR {
 	Node insert(Node node, int value) {
 		if(node == null) {
 			node = new Node(value);
+			this.nbElements++;
 		}
 		else {
 			if(value < node.getValue()) {
@@ -64,12 +65,16 @@ public class ABR {
 				node.rightChild = insert(node.rightChild, value);
 			}
 		}
-		this.nbElements++;
 		return node;
 	}
 	
 	void insert(int value) {
-		this.root = insert(this.root, value);
+		if(this.root == null){
+			this.root = new Node(value);
+			this.nbElements++;
+		}
+		else
+			insert(root, value);
 	}
 	
 	/*

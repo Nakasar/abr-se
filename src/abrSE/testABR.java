@@ -20,11 +20,12 @@ public class testABR extends TestCase {
 	public void testContains() {
 		ABR tree = new ABR();
 		tree.insert(5);
-		/*tree.insert(1);
+		tree.insert(1);
 		tree.insert(4);
 		tree.insert(9);
-		tree.insert(8);*/
+		tree.insert(8);
 		assertTrue(tree.contains(5));
-		//assertFalse(tree.contains(11));
+		assertTrue(tree.contains(8));
+		assertFalse(tree.contains(11));
 	}
 }
