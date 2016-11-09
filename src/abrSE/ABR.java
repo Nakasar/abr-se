@@ -11,8 +11,8 @@ public class ABR {
  */
 	private class Node {
 		private int value;
-		Node leftChild;
-		Node rightChild;
+		private Node leftChild;
+		private Node rightChild;
 		
 		Node(int value) {
 			this.value = value;
@@ -23,33 +23,43 @@ public class ABR {
 		int getValue() {
 			return this.value;
 		}
-		void setValue(int value) {
+		private void setValue(int value) {
 			this.value = value;
 		}
 		
-		Node getLeftChild() {
+		private Node getLeftChild() {
 			return this.leftChild;
 		}
-		Node getRightChild() {
+		private Node getRightChild() {
 			return this.rightChild;
 		}
 		
-		void setLeftChild(Node n) {
+		private void setLeftChild(Node n) {
 			this.leftChild = n;
 		}
-		void setRightChild(Node n) {
+		private void setRightChild(Node n) {
 			this.rightChild = n;
 		}
 	}
 	
-	int nbElements;
-	Node root = null;
+	private int nbElements;
+	private Node root = null;
 	
 	/**
 	 * Constructor of an new empty ABR.
 	 */
 	ABR() {
 		this.nbElements = 0;
+	}
+	
+	/**
+	 * Contructor of an ABR with points in ArrayList of Integer
+	 * 
+	 * @param points ArrayList of integer to add in the ABR.
+	 */
+	ABR(ArrayList<Integer> points) {
+		for(int value : points)
+			this.insert(value);
 	}
 	
 	/**
