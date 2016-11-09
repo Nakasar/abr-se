@@ -45,16 +45,21 @@ public class ABR {
 	int nbElements;
 	Node root = null;
 	
+	/**
+	 * Constructor of an new empty ABR.
+	 */
 	ABR() {
 		this.nbElements = 0;
 	}
 	
-	/*
+	/**
 	 * insert Adds the specified element to this ABR if it is not already present
 	 * 
-	 * @Param value int
+	 * @param node the actual node.
+	 * @param value the value to add in the tree.
+	 * @return the new node with the adding value.	
 	 */
-	Node insert(Node node, int value) {
+	private Node insert(Node node, int value) {
 		if(node == null) {
 			node = new Node(value);
 			this.nbElements++;
@@ -70,6 +75,11 @@ public class ABR {
 		return node;
 	}
 	
+	/**
+	 * insert Adds the specified element to this ABR if it is not already present
+	 * 
+	 * @param value the value to add in the tree.	
+	 */
 	void insert(int value) {
 		if(this.root == null){
 			this.root = new Node(value);
@@ -79,28 +89,31 @@ public class ABR {
 			insert(root, value);
 	}
 	
-	/*
+	/**
 	 * isEmpty Return if this ABR contains no elements.
+	 * 
+	 * @return	true if the the ABR is empty, false otherwise.
 	 */
 	protected boolean isEmpty() {
 		return this.nbElements() == 0;
 	}
 	
-	/*
+	/**
 	 * nbElements Returns the number of element in this ABR
+	 * 
+	 * @return integer the number of elements if the ABR.
 	 */
 	protected int nbElements() {
 		return this.nbElements;
 	}
 	
-	/*
+	/**
 	 * contains check if element is in tree
+	 * 
+	 * @param value integer value the value to search in the ABR.
+	 * @return true if value is in the ABR, false otherwise.
 	 */
-	protected boolean contains(int value) {
-		return this.contains(value, this.root);
-	}
-	
-	protected boolean contains(int value, Node node) {
+	private boolean contains(int value, Node node) {
 		if(node == null)
 			return false;
 		else if(node.getValue() == value)
@@ -113,10 +126,14 @@ public class ABR {
 		}
 	}
 	
+	protected boolean contains(int value) {
+		return this.contains(value, this.root);
+	}
+	
 	/*
-	 * tuList return nodes in a list of their values
+	 * toList return nodes in a list of their values
 	 */
-	protected ArrayList<Integer> toList(Node node, ArrayList<Integer> list) {
+	private ArrayList<Integer> toList(Node node, ArrayList<Integer> list) {
 		if(node == null)
 			return list;
 		else {
@@ -127,6 +144,11 @@ public class ABR {
 		}
 	}
 	
+	/**
+	 * toList return nodes in a list of their values
+	 * 
+	 * @return an ArrayList of Integer containing all elements of the ABR in ascending order.
+	 */
 	protected ArrayList<Integer> toList() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		return toList(this.root, list);
