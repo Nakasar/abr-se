@@ -1,0 +1,39 @@
+<project name="abr-se" default="doc">
+ <description>
+  ABR compiler for the SE test.
+ </description>
+ <property name="src.dir" value="src"/>
+ <property name="bin.dir" value="bin"/>
+ <property name="jar.dir" value="exe"/>
+ <property name="doc.dir" value="ABR_doc"/>
+ <property name="main-class" value="ABR"/>
+ <property name="jar-name" value="ABR.jar"/>
+
+<target name="clean">
+  <delete dir="${bin.dir}"/>
+  <delete dir="${jar.dir}"/>
+  <echo message="nettoyage terminee"/>
+</target>
+
+<target name="compile" depends="clean">
+	<mkdir dir="${bin.dir}"/>
+	<javac srcdir="${src.dir}" destdir="${bin.dir}"/>
+	<echo message="compilation terminee"/>
+</target>
+
+<target name="jar" depends="compile">
+  <mkdir dir="${jar.dir}"/>
+  <jar destfile="${jar.dir}/${jar-name}" basedir="${bin.dir}">
+    <manifest>
+      <attribute name="Main-Class" value="${main-class}"/>
+    </manifest>
+  </jar>
+  <echo message="Creation du fichier terminee"/>
+</target>
+
+<target name="doc" depends="jar" description="generate documentation">
+ <mkdir dir="${doc.dir}"/>
+ <javadoc sourcepath="${src.dir}" destdir="${doc.dir}"/>
+</target>
+
+</project>
