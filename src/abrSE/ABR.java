@@ -30,7 +30,7 @@ public class ABR {
 		Node getLeftChild() {
 			return this.leftChild;
 		}
-		Node getRightChild() {
+		Node setRightChild() {
 			return this.rightChild;
 		}
 		
