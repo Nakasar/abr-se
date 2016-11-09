@@ -28,4 +28,15 @@ public class testABR extends TestCase {
 		assertTrue(tree.contains(8));
 		assertFalse(tree.contains(11));
 	}
+	
+	public void testToList() {
+		ABR tree = new ABR();
+		tree.insert(5);
+		tree.insert(1);
+		tree.insert(4);
+		tree.insert(9);
+		tree.insert(8);
+		System.out.println(tree.toList().toString());
+		assertEquals(tree.toList().toString(), "[1, 4, 5, 8, 9]");
+	}
 }

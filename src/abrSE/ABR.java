@@ -1,5 +1,7 @@
 package abrSE;
 
+import java.util.ArrayList;
+
 public class ABR {
 /*
  * En utilisant la javadoc fournie comme documentation, créer une classe ABR définissant
@@ -109,5 +111,24 @@ public class ABR {
 			else
 				return contains(value, node.rightChild);
 		}
+	}
+	
+	/*
+	 * tuList return nodes in a list of their values
+	 */
+	protected ArrayList<Integer> toList(Node node, ArrayList<Integer> list) {
+		if(node == null)
+			return list;
+		else {
+			this.toList(node.leftChild, list);
+			list.add(node.getValue());
+			this.toList(node.rightChild, list);
+			return list;
+		}
+	}
+	
+	protected ArrayList<Integer> toList() {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		return toList(this.root, list);
 	}
 }
